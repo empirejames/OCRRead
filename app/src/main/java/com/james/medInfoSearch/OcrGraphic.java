@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.textocr;
+package com.james.medInfoSearch;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -23,8 +23,8 @@ import android.graphics.RectF;
 
 import com.google.android.gms.vision.text.Text;
 import com.google.android.gms.vision.text.TextBlock;
-import com.james.textocr.ui.camera.CameraSource;
-import com.james.textocr.ui.camera.GraphicOverlay;
+import com.james.medInfoSearch.ui.camera.CameraSource;
+import com.james.medInfoSearch.ui.camera.GraphicOverlay;
 
 import java.util.List;
 
@@ -107,7 +107,6 @@ public class OcrGraphic extends GraphicOverlay.Graphic {
         if (text == null) {
             return;
         }
-
         // Draws the bounding box around the TextBlock.
         RectF rect = new RectF(text.getBoundingBox());
         rect.left = translateX(rect.left);

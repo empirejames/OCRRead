@@ -1,4 +1,4 @@
-package com.james.textocr;
+package com.james.medInfoSearch;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.james.textocr.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CompoundButton useFlash;
     private TextView statusMessage;
     private TextView textValue;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     private static final int RC_OCR_CAPTURE = 9003;
     private static final String TAG = "MainActivity";
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         statusMessage = (TextView)findViewById(R.id.status_message);
         textValue = (TextView)findViewById(R.id.text_value);
 
@@ -43,11 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.read_text) {
             // launch Ocr capture activity.
-            Intent intent = new Intent(this, OcrCaptureActivity.class);
-            intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
-            intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
-
-            startActivityForResult(intent, RC_OCR_CAPTURE);
+            medInfoParser mi = new medInfoParser();
+            mi.start();
+//            Intent intent = new Intent(this, OcrCaptureActivity.class);
+//            intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
+//            intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
+//            startActivityForResult(intent, RC_OCR_CAPTURE);
         }
     }
     @Override

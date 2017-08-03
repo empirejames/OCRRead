@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.textocr.ui.camera;
+package com.james.medInfoSearch.ui.camera;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -48,6 +48,7 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
     private int mPreviewHeight;
     private float mHeightScaleFactor = 1.0f;
     private int mFacing = CameraSource.CAMERA_FACING_BACK;
+    private String TAG = GraphicOverlay.class.getSimpleName();
     private Set<T> mGraphics = new HashSet<>();
 
     /**
@@ -198,6 +199,7 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
             if ((mPreviewWidth != 0) && (mPreviewHeight != 0)) {
                 mWidthScaleFactor = (float) canvas.getWidth() / (float) mPreviewWidth;
                 mHeightScaleFactor = (float) canvas.getHeight() / (float) mPreviewHeight;
+                //Log.e(TAG,"canvas.getWidth() X mPreviewWidth" + canvas.getWidth()+ " X " + mPreviewWidth);
             }
 
             for (Graphic graphic : mGraphics) {

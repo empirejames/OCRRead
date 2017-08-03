@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.textocr;
+package com.james.medInfoSearch;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -44,9 +44,10 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
-import com.james.textocr.ui.camera.CameraSource;
-import com.james.textocr.ui.camera.CameraSourcePreview;
-import com.james.textocr.ui.camera.GraphicOverlay;
+import com.james.medInfoSearch.ui.camera.CameraSource;
+import com.james.medInfoSearch.ui.camera.CameraSourcePreview;
+import com.james.medInfoSearch.ui.camera.GraphicOverlay;
+import com.james.textocr.R;
 
 import java.io.IOException;
 
@@ -104,7 +105,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         gestureDetector = new GestureDetector(this, new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
-        Snackbar.make(mGraphicOverlay, "Tap to capture. Pinch/Stretch to zoom",
+        Snackbar.make(mGraphicOverlay, "點擊選取文字",
                 Snackbar.LENGTH_LONG)
                 .show();
     }

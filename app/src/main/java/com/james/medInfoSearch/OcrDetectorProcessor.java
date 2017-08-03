@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.textocr;
+package com.james.medInfoSearch;
 
 import android.util.SparseArray;
 
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
-import com.james.textocr.ui.camera.GraphicOverlay;
+import com.james.medInfoSearch.ui.camera.GraphicOverlay;
 
 /**
  * A very simple Processor which receives detected TextBlocks and adds them to the overlay
