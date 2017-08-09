@@ -3,6 +3,13 @@ package com.james.medInfoSearch;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,16 +27,20 @@ public class medInfoParser {
     String urlForEPS = "http://stock.wespai.com/p/7733";
     String urlForPresent = "http://stock.wespai.com/stock";
     String urlForGuli = "http://stock.wespai.com/tenrate#";
-
+    private DatabaseReference ref;
     private HandlerThread mThread;
     private Handler mThreadHandler;
+
+
     ArrayList<String> stockNumberList = new ArrayList<String>();
-    ArrayList<String> historyGuHi = new ArrayList<String>();
+
+    ArrayList<String> totalName = new ArrayList<String>();
     ArrayList<String> historyEPS = new ArrayList<String>();
     ArrayList<String> historyPresent = new ArrayList<String>();
     ArrayList<String> historyGuli = new ArrayList<String>();
-    String[] name = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    int total ;
+    String[] name = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    int total;
+
     public void start() {
         mThread = new HandlerThread("jsoup");
         mThread.start();
@@ -37,11 +48,10 @@ public class medInfoParser {
         mThreadHandler.post(new Runnable() {
             @Override
             public void run() {
-                getMedInfo(name[0]);
-//                for(int i=0; i<name.length;i++){
-//                    getMedInfo(name[i]);
-//                }
-                Log.e(TAG,"total : " + total);
+                for (int i = 0; i < name.length; i++) {
+                    getMedInfo(name[i]);
+                }
+                Log.e(TAG, "total : " + total);
 
             }
         });
@@ -49,21 +59,25 @@ public class medInfoParser {
     }
 
     public ArrayList<String> getMedInfo(String num) {
-        String url = "http://web-reg-server.803.org.tw:8090/med_query_easy.asp?idx=" +num;
+        String url = "http://web-reg-server.803.org.tw:8090/med_query_easy.asp?idx=" + num;
+        String[] medican;
+        String[] medicanA;
         try {
             Document doc = Jsoup.connect(url).get();
             Element table = doc.select("table").get(0);
             Elements rows = table.select("tr");
-            Pattern pattern = Pattern.compile("^(\\d+.*)");
-            for(int i =6; i<7;i++){
+            Pattern pattern = Pattern.compile("^[\\d].*");
+            for (int i = 0; i < rows.size(); i++) {
                 Element row = rows.get(i);
                 Elements cols = row.select("td");
                 Elements links = cols.select("a[href]");
                 Matcher matcher = pattern.matcher(cols.text());
                 if (matcher.matches()) {
-                    Log.e(TAG, cols.text() + "   " + links.attr("href"));
-                    getMedDetail(links.attr("href"));
-                    total +=1;
+                    if (cols.text().length() < 50) {
+                        medican = cols.text().split(" ");
+                        saveUserData(total , medican[1], getMedDetail(links.attr("href")));
+                        total += 1;
+                    }
                 }
             }
         } catch (IOException e) {
@@ -73,32 +87,38 @@ public class medInfoParser {
     }
 
 
-    public void getMedDetail(String url){
-        String [] infoSplit =  url.split("\\?");
-        //Log.e(TAG,infoSplit[1]);
+    public ArrayList<String> getMedDetail(String url) {
+        ArrayList<String> stockDetailList = new ArrayList<String>();
+        String[] infoSplit = url.split("\\?");
+        String result = "";
         //String detailURL = "http://web-reg-server.803.org.tw:8090/med_info_detail.asp?" +infoSplit[1];
-        String detailURL = "http://web-reg-server.803.org.tw:8090/med_info_detail.asp?code=RO0A312";
+        String detailURL = "http://web-reg-server.803.org.tw:8090/med_info_detail.asp?" + infoSplit[1];
+        //String detailURL = "http://web-reg-server.803.org.tw:8090/med_info.asp?code=ROYASMI";
+        Log.e(TAG, "detailURL : " + detailURL);
         //Log.e(TAG,detailURL);
         try {
-            Document doc = Jsoup.connect(detailURL).get();
-            Element table = doc.select("table[id=tblInfo1 ]").first();
+            Document docs = Jsoup.connect(detailURL).get();
+            Element table = docs.select("table[id=tblInfo1]").first();
             Elements rows = table.select("tr");
-            for(int i =2; i<rows.size();i++){
+            for (int i = 1; i < rows.size(); i++) {
                 Element row = rows.get(i);
                 Elements cols_th = row.select("th");
                 Elements cols_td = row.select("td");
-                Log.e(TAG,  i + "  -  " + cols_th.text() + "  " + cols_td.text() );
+                if (result.equals("")) {
+                    result = "無";
+                    stockDetailList.add("無");
+                    //Log.e(TAG, i + "  -  " + cols_th.text() + "  " + result);
+                } else {
+                    result = cols_td.text();
+                    stockDetailList.add(result);
+                    //Log.e(TAG, i + "  -  " + cols_th.text() + "  " + result);
+                }
+
             }
-
-
-        }catch(Exception e){
-
+            //Log.e(TAG,"result: " + result);
+        } catch (Exception e) {
         }
-
-
-
-
-
+        return stockDetailList;
     }
 
     public String transferDate(String date) {
@@ -149,4 +169,29 @@ public class medInfoParser {
         }
         return temp;
     }
+
+    private void saveUserData(final int total , final String medName ,final ArrayList Name) {
+        ref = FirebaseDatabase.getInstance().getReference();
+        ref.keepSynced(true);
+
+        final DatabaseReference medsRef = ref.child("medicine");
+        //final DatabaseReference usersRef = ref.child("medicine").child(userId);
+        medsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            String medicianName  = "";
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    medicianName = dataSnapshot.child(Integer.toString(total)).getValue().toString();
+                    Log.e(TAG, "medicianName " + medicianName );
+                    ref.child("medicine").child(Integer.toString(total)).child(medicianName).setValue(new mediaican(Name));
+                }
+        }
+
+        @Override
+        public void onCancelled (DatabaseError databaseError){
+
+        }
+    });
+}
 }
