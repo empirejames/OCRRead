@@ -1,61 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#D0F4EA"
     tools:context="com.james.medInfoSearch.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/info1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:background="#E9FAF5"
+        android:weightSum="2">
+
         <TextView
+            android:id="@+id/status_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:text="@string/ocr_header"
-            android:id="@+id/status_message"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/text_value"
-            android:layout_below="@+id/status_message"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="110dp"
-            android:layout_alignRight="@+id/status_message"
-            android:layout_alignEnd="@+id/status_message" />
+            android:layout_weight="1"
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/read_text"
-            android:id="@+id/read_text"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/auto_focus"
-            android:id="@+id/auto_focus"
-            android:layout_below="@+id/text_value"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="66dp"
-            android:checked="true" />
+            <ImageView
+                android:id="@+id/iv_write"
+                android:layout_width="165dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@mipmap/write" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/infonew11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/edTextMedInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:ems="10"
+                    android:hint="@string/eng_medName"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/btn_read"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8FCC2"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/write_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/infoNw"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/use_flash"
-            android:id="@+id/use_flash"
-            android:layout_alignTop="@+id/auto_focus"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:checked="false" />
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="165dp"
+                android:layout_height="210dp"
+                app:srcCompat="@mipmap/camera" />
+
+            <LinearLayout
+                android:id="@+id/info11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <CheckBox
+                    android:id="@+id/auto_focus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="40dp"
+                    android:checked="true"
+                    android:text="@string/auto_focus" />
+
+                <CheckBox
+                    android:id="@+id/use_flash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/auto_focus"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/auto_focus"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
+                    android:text="@string/use_flash" />
+
+                <Button
+                    android:id="@+id/read_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E8FCC2"
+                    android:layout_alignBottom="@+id/use_flash"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/auto_focus"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/read_text" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

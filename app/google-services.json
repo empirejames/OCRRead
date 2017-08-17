@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "319838152310",
+    "firebase_url": "https://medsearch-31acf.firebaseio.com",
+    "project_id": "medsearch-31acf",
+    "storage_bucket": "medsearch-31acf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319838152310:android:dd8cf562df66aa90",
+        "android_client_info": {
+          "package_name": "com.james.textocr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319838152310-v84s5pur356oknp7v6b97p5ebhmep2fb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.james.textocr",
+            "certificate_hash": "ff5a25a354a97852f5a0de8b4d7d7dc8a5e01fdb"
+          }
+        },
+        {
+          "client_id": "319838152310-bsgfrvjnfs0gg444m7ugkml12ft4s1et.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcyfPzIApexF5CfBzjNiFH8mOzjh7XGW0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319838152310-bsgfrvjnfs0gg444m7ugkml12ft4s1et.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

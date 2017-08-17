@@ -27,6 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.james.medInfoSearch.DisplayActivity">
+            </activity>
         <activity android:name="com.james.medInfoSearch.OcrCaptureActivity"
             android:label="Read Text" />
     </application>

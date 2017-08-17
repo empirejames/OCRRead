@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TestOCR</string>
+    <string name="app_name">醫藥大師</string>
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
     <string name="title_activity_main">Ocr Detector Sample</string>
-    <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
-    <string name="read_text">Detect Text</string>
-    <string name="auto_focus">Auto Focus</string>
-    <string name="use_flash">Use Flash</string>
-    <string name="ocr_success">Text read successfully</string>
-    <string name="ocr_failure">No text captured</string>
-    <string name="ocr_error">"Error reading text: %1$s"</string>
+    <string name="ocr_header">請選擇『輸入』或『照相』</string>
+    <string name="eng_medName">請輸入英文藥名</string>
+    <string name="read_text">照相掃描</string>
+    <string name="write_text">輸入搜尋</string>
+    <string name="auto_focus">自動對焦</string>
+    <string name="use_flash">閃光燈</string>
+    <string name="ocr_success">相機掃描成功，請按下『輸入搜尋』</string>
+    <string name="ocr_failure">沒有找到文字</string>
+    <string name="ocr_error">"文字讀取錯誤: %1$s"</string>
 </resources>
