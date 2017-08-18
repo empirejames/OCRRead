@@ -35,8 +35,7 @@
         <LinearLayout
             android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="227dp"
 
             android:orientation="horizontal"
             android:weightSum="1">
@@ -50,7 +49,7 @@
             <LinearLayout
                 android:id="@+id/infonew11"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="263dp"
                 android:orientation="vertical"
                 android:weightSum="1">
 
@@ -67,8 +66,12 @@
                     android:id="@+id/btn_read"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#E8FCC2"
                     android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_shape"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
                     android:text="@string/write_text" />
             </LinearLayout>
         </LinearLayout>
@@ -118,11 +121,15 @@
                     android:id="@+id/read_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#E8FCC2"
                     android:layout_alignBottom="@+id/use_flash"
                     android:layout_alignParentEnd="true"
                     android:layout_alignTop="@+id/auto_focus"
                     android:layout_marginTop="30dp"
+                    android:background="@drawable/btn_shape"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
                     android:text="@string/read_text" />
             </LinearLayout>
         </LinearLayout>

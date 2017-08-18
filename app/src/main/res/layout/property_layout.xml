@@ -44,9 +44,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/image"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp">
+        android:layout_below="@+id/image">
         <LinearLayout
             android:id="@+id/info1"
             android:layout_width="match_parent"
@@ -311,7 +309,11 @@
             android:text="繼續查詢"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#E8FCC2"
+            android:background="@drawable/btn_shape_sqare"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
             android:layout_below="@id/healthDpLimit"
             android:layout_marginBottom="5dp"
             />
