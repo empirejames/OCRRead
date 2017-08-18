@@ -60,6 +60,7 @@
                     android:layout_marginTop="40dp"
                     android:ems="10"
                     android:hint="@string/eng_medName"
+                    android:text="Alprazolam"
                     android:inputType="textPersonName" />
 
                 <Button
@@ -68,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/btn_shape"
-                    android:shadowColor="#A8A8A8"
+                    android:shadowColor="@color/read"
                     android:shadowDx="0"
                     android:shadowDy="0"
                     android:shadowRadius="5"
@@ -126,7 +127,7 @@
                     android:layout_alignTop="@+id/auto_focus"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/btn_shape"
-                    android:shadowColor="#A8A8A8"
+                    android:shadowColor="@color/read"
                     android:shadowDx="0"
                     android:shadowDy="0"
                     android:shadowRadius="5"
@@ -134,5 +135,11 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
+    <com.victor.loading.book.BookLoading
+        android:id="@+id/bookloading"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:background="@color/hospitalGreen"
+        android:layout_centerInParent="true" />
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.james.medInfoSearch;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.james.textocr.R;
+import com.victor.loading.book.BookLoading;
 
 import java.util.ArrayList;
 
@@ -36,15 +38,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference ref;
     private ArrayList<String> medData = new ArrayList<String>();
     private Bundle bundle = new Bundle();
-
+    private ProgressDialog mProgressDialog;
     private static final int RC_OCR_CAPTURE = 9003;
     private static final String TAG = "MainActivity";
     private String medNames;
-
+    private BookLoading bookLoading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bookLoading= (BookLoading) findViewById(R.id.bookloading);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         statusMessage = (TextView) findViewById(R.id.status_message);
         imgViewCamera = (ImageView) findViewById(R.id.iv_camera);
@@ -67,8 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.getId() == R.id.btn_read) {
             String parserMed;
             medNames = edTextMedInfo.getText().toString();
-            parserMed = medNames.substring(0,1).toUpperCase() +medNames.substring(1);
-            new GetMedInfo().execute(parserMed);
+            if(!medNames.equals("")){
+                parserMed = medNames.substring(0,1).toUpperCase() +medNames.substring(1);
+                new GetMedInfo().execute(parserMed);
+            }else{
+                Toast.makeText(MainActivity.this, "請輸入藥品完整名稱", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -95,6 +103,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private class GetMedInfo extends AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    bookLoading.setVisibility(View.VISIBLE);
+                    bookLoading.start();
+                }
+            });
+        }
         @Override
         protected String doInBackground(final String... params) {
             Log.e(TAG, "getParams : "  + params[0]);
@@ -137,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void goToDisplay() {
+        bookLoading.setVisibility(View.GONE);
+        bookLoading.stop();
         bundle.putSerializable("arrayList", medData);
         if (medData.size()!=0) {
             Intent intent = new Intent(MainActivity.this, DisplayActivity.class);

@@ -25,7 +25,7 @@ public class propertyAdapter extends ArrayAdapter<Property> {
     private Context context;
     private List<Property> medicianProperties;
     private Property medProperty;
-    private TextView medcian, description, tvAdapter, tvEffect, tvFrequency, tvIndiaction, tvDosage, tvBathroom,HealthDpt, healthDpLimitText, accrossActionText,adjustText,maxText,ATCClassText;
+    private TextView medcian, description, tvAdapter, tvEffect, tvFrequency, tvIndiaction,avoidText, tvDosage, tvBathroom,HealthDpt, healthDpLimitText, accrossActionText,adjustText,maxText,ATCClassText;
     private Button btn_back;
     public propertyAdapter(Context context, int resource, ArrayList<Property> medicianProperties) {
         super(context, resource, medicianProperties);
@@ -60,6 +60,8 @@ public class propertyAdapter extends ArrayAdapter<Property> {
         tvEffect.setText(medProperty.getSideEffect());
         tvFrequency = (TextView) view.findViewById(R.id.tvFrequency);
         tvFrequency.setText(medProperty.getFrequences());
+        avoidText = (TextView) view.findViewById(R.id.avoidText);
+        avoidText.setText(medProperty.getAttention());
         tvIndiaction = (TextView) view.findViewById(R.id.tvIndiaction);
         tvIndiaction.setText(medProperty.getIngredient());
         tvDosage = (TextView) view.findViewById(R.id.tvDosage);

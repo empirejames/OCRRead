@@ -58,7 +58,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="適應症" />
 
             <TextView
@@ -76,7 +76,7 @@
             android:layout_below="@id/adapter"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
             android:layout_marginRight="15dp"
             android:text="常見副作用" />
 
@@ -96,7 +96,7 @@
             android:layout_below="@id/side_effect"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
             android:layout_marginRight="15dp"
             android:text="常用劑量及頻次" />
 
@@ -117,7 +117,7 @@
                 android:layout_marginRight="15dp"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
                 android:text="注意事項與警語" />
             <TextView
                 android:id="@+id/avoidText"
@@ -135,7 +135,7 @@
             android:layout_below="@id/avoidText"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
             android:text="成分" />
 
             <TextView
@@ -154,7 +154,7 @@
             android:layout_below="@id/indication"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
             android:layout_marginRight="15dp"
             android:text="劑型" />
 
@@ -175,7 +175,7 @@
                 android:layout_marginRight="15dp"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
                 android:text="健保碼" />
 
             <TextView
@@ -195,7 +195,7 @@
             android:layout_marginRight="15dp"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/block"
             android:text="衛生署許可字號" />
             <TextView
                 android:id="@+id/healthDpText"
@@ -215,7 +215,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="ATC治療分類" />
             <TextView
                 android:id="@+id/ATCClassText"
@@ -235,7 +235,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="最大劑量" />
             <TextView
                 android:id="@+id/maxText"
@@ -254,7 +254,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="劑量調整" />
             <TextView
                 android:id="@+id/adjustText"
@@ -274,7 +274,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="藥品交互作用" />
             <TextView
                 android:id="@+id/accrossActionText"
@@ -293,7 +293,7 @@
             android:layout_marginRight="15dp"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/block"
             android:text="健保給付規定限制" />
             <TextView
                 android:id="@+id/healthDpLimitText"
