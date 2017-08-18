@@ -30,7 +30,7 @@
         <activity android:name="com.james.medInfoSearch.DisplayActivity">
             </activity>
         <activity android:name="com.james.medInfoSearch.OcrCaptureActivity"
-            android:label="Read Text" />
+            android:label="相機掃瞄" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:paddingBottom="10dp">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/img_med"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginRight="10dp"
@@ -18,7 +18,7 @@
         android:id="@+id/infoSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/image"
+        android:layout_toRightOf="@+id/img_med"
         android:orientation="vertical">
 
         <TextView
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/image">
+        android:layout_below="@+id/img_med">
         <LinearLayout
             android:id="@+id/info1"
             android:layout_width="match_parent"

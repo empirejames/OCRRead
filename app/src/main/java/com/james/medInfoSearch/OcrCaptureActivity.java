@@ -105,7 +105,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         gestureDetector = new GestureDetector(this, new CaptureGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
-        Snackbar.make(mGraphicOverlay, "點擊選取文字",
+        Snackbar.make(mGraphicOverlay, "點擊選取 - 藥品字串",
                 Snackbar.LENGTH_LONG)
                 .show();
     }
@@ -116,7 +116,7 @@ public final class OcrCaptureActivity extends AppCompatActivity {
      * sending the request.
      */
     private void requestCameraPermission() {
-        Log.w(TAG, "Camera permission is not granted. Requesting permission");
+        Log.w(TAG, "沒有相機權限，請提供程式相機權限");
 
         final String[] permissions = new String[]{Manifest.permission.CAMERA};
 

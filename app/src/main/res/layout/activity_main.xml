@@ -60,7 +60,7 @@
                     android:layout_marginTop="40dp"
                     android:ems="10"
                     android:hint="@string/eng_medName"
-                    android:text="Alprazolam"
+                    android:text="Aloxi"
                     android:inputType="textPersonName" />
 
                 <Button
@@ -119,7 +119,7 @@
                     android:text="@string/use_flash" />
 
                 <Button
-                    android:id="@+id/read_text"
+                    android:id="@+id/btn_capture"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/use_flash"
@@ -140,6 +140,6 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:visibility="gone"
-        android:background="@color/hospitalGreen"
+        android:background="@color/block"
         android:layout_centerInParent="true" />
 </RelativeLayout>

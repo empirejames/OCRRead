@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,13 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CompoundButton useFlash;
     private TextView statusMessage;
 
-    private ImageView imgViewCamera;
     private EditText edTextMedInfo;
     private FirebaseAnalytics mFirebaseAnalytics;
     private DatabaseReference ref;
     private ArrayList<String> medData = new ArrayList<String>();
     private Bundle bundle = new Bundle();
-    private ProgressDialog mProgressDialog;
+    private Button btn_search;
     private static final int RC_OCR_CAPTURE = 9003;
     private static final String TAG = "MainActivity";
     private String medNames;
@@ -50,24 +50,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bookLoading= (BookLoading) findViewById(R.id.bookloading);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         statusMessage = (TextView) findViewById(R.id.status_message);
-        imgViewCamera = (ImageView) findViewById(R.id.iv_camera);
         edTextMedInfo = (EditText) findViewById(R.id.edTextMedInfo);
         autoFocus = (CompoundButton) findViewById(R.id.auto_focus);
         useFlash = (CompoundButton) findViewById(R.id.use_flash);
-        findViewById(R.id.read_text).setOnClickListener(this);
-        findViewById(R.id.btn_read).setOnClickListener(this);
+        btn_search = (Button) findViewById(R.id.btn_read);
+        btn_search.setOnClickListener(this);
+        findViewById(R.id.btn_capture).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         medData.clear();
-        if (v.getId() == R.id.read_text) {
+        if (v.getId() == R.id.btn_capture) {
             //new GetMedInfo().execute("Alprazolam");
             Intent intent = new Intent(this, OcrCaptureActivity.class);
             intent.putExtra(OcrCaptureActivity.AutoFocus, autoFocus.isChecked());
             intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
             startActivityForResult(intent, RC_OCR_CAPTURE);
         } else if (v.getId() == R.id.btn_read) {
+
+            //medInfoParser mp = new medInfoParser();  //getData using
+            //mp.start();
             String parserMed;
             medNames = edTextMedInfo.getText().toString();
             if(!medNames.equals("")){
@@ -88,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String text = data.getStringExtra(OcrCaptureActivity.TextBlockObject);
                     statusMessage.setText(R.string.ocr_success);
                     edTextMedInfo.setText(text);
-                    //new GetMedInfo().execute(text);
                 } else {
                     statusMessage.setText(R.string.ocr_failure);
                     Log.d(TAG, "No Text captured, intent data is null");
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onPreExecute();
             runOnUiThread(new Runnable() {
                 public void run() {
+                    btn_search.setClickable(false);
                     bookLoading.setVisibility(View.VISIBLE);
                     bookLoading.start();
                 }
@@ -156,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void goToDisplay() {
         bookLoading.setVisibility(View.GONE);
+        btn_search.setClickable(true);
         bookLoading.stop();
         bundle.putSerializable("arrayList", medData);
         if (medData.size()!=0) {

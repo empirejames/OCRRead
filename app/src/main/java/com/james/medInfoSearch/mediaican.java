@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class mediaican {
     private String medName;
-    private String email;
-    private String UID;
     private ArrayList<String> favorite = new ArrayList(){};
 
     public mediaican(String medName, ArrayList favorite) {
@@ -23,22 +21,6 @@ public class mediaican {
         this.medName = medName;
     }
     public mediaican() {
-    }
-
-    public String getUID() {
-        return UID;
-    }
-
-    public void setUID(String UID) {
-        this.UID = UID;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getName() {

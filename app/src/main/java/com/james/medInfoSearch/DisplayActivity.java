@@ -38,7 +38,7 @@ public class DisplayActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle buldle = intent.getExtras();
         getMedData = buldle.getStringArrayList("arrayList");
-        medcianProperties.add(new Property(getMedData.get(0),getMedData.get(1),getMedData.get(2),getMedData.get(3),getMedData.get(4),getMedData.get(5),getMedData.get(6),getMedData.get(7),getMedData.get(8),getMedData.get(9),getMedData.get(10),getMedData.get(11),getMedData.get(12),getMedData.get(13),getMedData.get(14),getMedData.get(15),getMedData.get(16),getMedData.get(17),getMedData.get(18)));
+        medcianProperties.add(new Property(getMedData.get(0),getMedData.get(1),getMedData.get(2),getMedData.get(3),getMedData.get(4),getMedData.get(5),getMedData.get(6),getMedData.get(7),getMedData.get(8),getMedData.get(9),getMedData.get(10),getMedData.get(11),getMedData.get(12),getMedData.get(13),getMedData.get(14),getMedData.get(15),getMedData.get(16),getMedData.get(17),getMedData.get(18),getMedData.get(19)));
         ArrayAdapter<Property> adapter = new propertyAdapter(this, 0, medcianProperties);
         ListView listView = (ListView) findViewById(R.id.customListView);
         listView.setAdapter(adapter);

@@ -4,7 +4,7 @@ package com.james.medInfoSearch;
 public class Property {
 
     //property basics
-    private int streetNumber;
+    private String streetNumber;
     private String pregnantLevel;
     private String medEngName;
     private String medChiName;
@@ -25,8 +25,9 @@ public class Property {
     private String genBaoPay;
     private String seeDatail;
     //constructor
-    public Property(String pregnantLevel, String medEngName, String medChiName, String ingredient, String dosageForm, String genBaoNum, String HealthDpt, String ATC, String indications,
+    public Property(String streetNumber, String pregnantLevel, String medEngName, String medChiName, String ingredient, String dosageForm, String genBaoNum, String HealthDpt, String ATC, String indications,
                     String sideEffect, String taboo,String frequences,String maxDosage,String dosageAdjust,String attention,String interaction,String injectionLimit,String genBaoPay,String seeDatail){
+        this.streetNumber = streetNumber;
         this.pregnantLevel = pregnantLevel;
         this.medEngName = medEngName;
         this.medChiName = medChiName;
@@ -49,6 +50,7 @@ public class Property {
     }
 
     //getters
+    public String getImageNumber() { return streetNumber; }
     public String getPregnantLevel() { return pregnantLevel; }
     public String getMedEngName() {return medEngName; }
     public String getMedChiName() {return medChiName; }
