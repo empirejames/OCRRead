@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.james.medInfoSearch.DisplayActivity">
+
             </activity>
         <activity android:name="com.james.medInfoSearch.OcrCaptureActivity"
             android:label="相機掃瞄" />

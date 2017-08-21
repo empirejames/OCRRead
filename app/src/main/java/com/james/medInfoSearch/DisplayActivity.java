@@ -9,9 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,11 +33,13 @@ public class DisplayActivity extends AppCompatActivity {
     private ArrayList <String> getMedData = new ArrayList<String>();
     private ArrayList<Property> medcianProperties = new ArrayList<>();
     private static final String TAG = DisplayActivity.class.getSimpleName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_display);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Intent intent = getIntent();
         Bundle buldle = intent.getExtras();
         getMedData = buldle.getStringArrayList("arrayList");
@@ -44,5 +49,7 @@ public class DisplayActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         Log.e(TAG,"getMedData : " + getMedData );
     }
+
+
 
 }
