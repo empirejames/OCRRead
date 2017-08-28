@@ -18,6 +18,7 @@ package com.james.medInfoSearch.ui.camera;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.HashSet;
@@ -199,7 +200,8 @@ public class GraphicOverlay<T extends GraphicOverlay.Graphic> extends View {
             if ((mPreviewWidth != 0) && (mPreviewHeight != 0)) {
                 mWidthScaleFactor = (float) canvas.getWidth() / (float) mPreviewWidth;
                 mHeightScaleFactor = (float) canvas.getHeight() / (float) mPreviewHeight;
-                //Log.e(TAG,"canvas.getWidth() X mPreviewWidth" + canvas.getWidth()+ " X " + mPreviewWidth);
+                Log.e(TAG,"canvas.getWidth() X mPreviewWidth = " + canvas.getWidth()+ " / " + mPreviewWidth + " = " + mWidthScaleFactor);
+                Log.e(TAG,"canvas.getHeight() X mPreviewHeight = " + canvas.getHeight()+ " / " + mPreviewHeight + " = " + mHeightScaleFactor);
             }
 
             for (Graphic graphic : mGraphics) {
